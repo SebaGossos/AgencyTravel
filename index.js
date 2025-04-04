@@ -1,21 +1,18 @@
 import express from "express";
+import router from "./routes/index.js";
 
 const app = express();
 
+// define port
 const PORT = process.env.PORT || 4000;
 
-app.get("/", (req, res) => {
-  res.send('Inicio')
-});
+// enable pug 
+app.set('view engine', 'pug');
 
-app.get("/nosotros", (req, res) => {
-  res.send('Nosotros')
-});
+// add router
+app.use('/', router)
 
-app.get("/contacto", (req, res) => {
-  res.send('Contacto')
-});
 
 app.listen(PORT, () => {
-  console.log(`El servidore esta funcionando en el puerto ${PORT}`);
+  console.log(`El servidor esta funcionando en el puerto ${PORT}`);
 });
